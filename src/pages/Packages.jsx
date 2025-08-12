@@ -37,7 +37,7 @@ export default function Packages() {
   return (
     <section
       id="packages"
-      className="min-h-screen bg-gray-900 text-white flex flex-col items-center px-6 md:px-12 py-6"
+      className="bg-gray-900 text-white flex flex-col items-center px-6 md:px-12 py-6"
     >
       <h2 className="text-4xl md:text-4xl font-extrabold text-cyan-400 mb-12 border-b-4 border-cyan-600 inline-block pb-2">
         Our Packages

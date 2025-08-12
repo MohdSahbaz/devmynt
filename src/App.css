@@ -38,3 +38,19 @@ html {
   background: #8665e4;
   filter: blur(500px);
 }
+
+@media (max-width: 970px) {
+  .custome-navigation {
+    display: none;
+  }
+}
+
+.custome-hamburger {
+  display: none;
+}
+
+@media (max-width: 970px) {
+  .custome-hamburger {
+    display: flex;
+  }
+}

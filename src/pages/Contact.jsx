@@ -22,7 +22,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen bg-gray-900 text-white md:py-12 py-6 px-6 md:px-20 flex flex-col items-center"
+      className="bg-gray-900 text-white md:py-12 py-6 px-6 md:px-20 flex flex-col items-center"
     >
       <h2 className="md:text-5xl text-4xl font-extrabold text-cyan-400 mb-12 border-b-4 border-cyan-600 inline-block pb-2">
         Contact Us
