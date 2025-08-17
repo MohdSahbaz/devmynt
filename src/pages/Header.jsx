@@ -36,7 +36,7 @@ const Header = () => {
             {navItems.map((item) => (
               <a
                 key={item}
-                href={`#${item}`}
+                href={`#${item == "home" ? "" : item}`}
                 className="relative text-white/90 tracking-wide text-sm font-medium transition duration-300 hover:text-white before:content-[''] before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-full before:bg-gradient-to-r  before:from-cyan-400  before:to-blue-500 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100 transform hover:scale-105"
               >
                 {item.charAt(0).toUpperCase() + item.slice(1)}

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const Home = () => {
   useEffect(() => {
@@ -8,6 +8,84 @@ const Home = () => {
       "https://unpkg.com/@splinetool/viewer@1.10.44/build/spline-viewer.js";
     document.body.appendChild(script);
   }, []);
+
+  const canvasRef = useRef(null);
+
+  // Animated background waves (optimized - only initializes once)
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    // Wave definition (no colors here)
+    const waves = [
+      { y: height * 0.5, length: 0.015, amplitude: 80, frequency: 0.01 },
+      { y: height * 0.6, length: 0.02, amplitude: 60, frequency: 0.02 },
+      { y: height * 0.4, length: 0.025, amplitude: 50, frequency: 0.018 },
+    ];
+
+    // Pick colors based on the current theme
+    const getWaveColor = (index) => {
+      if (true) {
+        return [
+          "rgba(0,255,255,0.2)",
+          "rgba(0,180,255,0.15)",
+          "rgba(0,140,255,0.1)",
+        ][index];
+      } else {
+        return [
+          "rgba(59,130,246,0.15)",
+          "rgba(96,165,250,0.1)",
+          "rgba(147,197,253,0.08)",
+        ][index];
+      }
+    };
+
+    let increment = 0;
+    let animationId;
+
+    const animate = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      waves.forEach((wave, i) => {
+        ctx.beginPath();
+        ctx.moveTo(0, height / 2);
+
+        for (let x = 0; x < width; x++) {
+          const y =
+            wave.y +
+            Math.sin(x * wave.length + increment) *
+              wave.amplitude *
+              Math.sin(increment);
+          ctx.lineTo(x, y);
+        }
+
+        // Use dynamic color based on theme
+        ctx.strokeStyle = getWaveColor(i);
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      });
+
+      increment += 0.02;
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    const resize = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener("resize", resize);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      window.removeEventListener("resize", resize);
+    };
+  }, []); // <-- empty dependency so it runs only once
 
   return (
     <>
@@ -23,6 +101,9 @@ const Home = () => {
                    bg-gray-900 text-white"
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
+        {/* Animated Canvas */}
+        <canvas ref={canvasRef} className="absolute inset-0 z-0" />
+
         {/* Left Text */}
         <section className="flex-1 max-w-xl space-y-8 animate-fadeInUp">
           <h1

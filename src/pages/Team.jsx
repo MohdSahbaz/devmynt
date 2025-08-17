@@ -1,43 +1,23 @@
+import React from "react";
+
 export default function Team() {
   const teamMembers = [
     {
-      name: "Rahul Sharma",
-      role: "Founder & CEO",
-      photo: "https://randomuser.me/api/portraits/men/11.jpg",
-      bio: "Passionate about building innovative web solutions that transform businesses.",
+      name: "Sahbaz",
+      role: "Co-Founder & Full Stack Developer",
+      bio: "Passionate about building innovative web solutions that transform businesses and improve user experience.",
       social: {
-        linkedin: "https://linkedin.com/in/rahulsharma",
-        twitter: "https://twitter.com/rahulsharma",
+        linkedin: "https://linkedin.com/in/shahbaz",
+        twitter: "https://twitter.com/shahbaz",
       },
     },
     {
-      name: "Anita Desai",
-      role: "Lead Designer",
-      photo: "https://randomuser.me/api/portraits/women/22.jpg",
-      bio: "Creative designer focused on user-centric and aesthetic digital experiences.",
+      name: "Aamir",
+      role: "Co-Founder & Full Stack Developer",
+      bio: "Creative problem solver focused on user-centric and aesthetic digital experiences, building robust and scalable applications.",
       social: {
-        linkedin: "https://linkedin.com/in/anitadesai",
-        twitter: "https://twitter.com/anitadesai",
-      },
-    },
-    {
-      name: "Karan Patel",
-      role: "Senior Developer",
-      photo: "https://randomuser.me/api/portraits/men/33.jpg",
-      bio: "Full-stack developer specializing in scalable and performant applications.",
-      social: {
-        linkedin: "https://linkedin.com/in/karanpatel",
-        twitter: "https://twitter.com/karanpatel",
-      },
-    },
-    {
-      name: "Sneha Joshi",
-      role: "Marketing Head",
-      photo: "https://randomuser.me/api/portraits/women/44.jpg",
-      bio: "Driving growth through strategic marketing and customer engagement.",
-      social: {
-        linkedin: "https://linkedin.com/in/snehajoshi",
-        twitter: "https://twitter.com/snehajoshi",
+        linkedin: "https://linkedin.com/in/aamir",
+        twitter: "https://twitter.com/aamir",
       },
     },
   ];
@@ -47,37 +27,40 @@ export default function Team() {
       id="team"
       className="bg-gray-900 text-white md:py-12 py-6 px-6 md:px-20"
     >
-      <h2 className="md:text-5xl text-4xl font-extrabold text-cyan-400 mb-12 border-b-4 border-cyan-600 inline-block pb-2">
-        Meet Our Team
-      </h2>
+      <div className="text-center mb-12">
+        <h2 className="md:text-5xl text-4xl font-extrabold text-cyan-400 inline-block pb-2">
+          Meet Our Team
+        </h2>
+        <p className="text-xl text-gray-400 mt-4 max-w-2xl mx-auto">
+          We are a team of dedicated developers committed to creating
+          exceptional digital products.
+        </p>
+      </div>
 
-      <div className="max-w-7xl mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-        {teamMembers.map(({ name, role, photo, bio, social }, idx) => (
+      <div className="max-w-4xl mx-auto grid gap-10 sm:grid-cols-1 lg:grid-cols-2">
+        {teamMembers.map(({ name, role, bio, social }, idx) => (
           <div
             key={idx}
-            className="bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col items-center text-center hover:shadow-cyan-500 transition-shadow duration-300"
+            className="bg-gray-800 p-8 rounded-2xl shadow-lg flex flex-col items-center text-center border border-cyan-500 hover:shadow-cyan-500 transition-all duration-300"
           >
-            <img
-              src={photo}
-              alt={name}
-              className="w-28 h-28 rounded-full object-cover mb-4 border-4 border-cyan-500"
-            />
-            <h3 className="text-xl font-semibold text-cyan-400">{name}</h3>
+            <div className="w-28 h-28 flex items-center justify-center rounded-full bg-cyan-500 text-white text-4xl font-bold mb-4">
+              {name.charAt(0)}
+            </div>
+            <h3 className="text-2xl font-semibold text-cyan-400">{name}</h3>
             <p className="text-sm text-gray-400 mb-2">{role}</p>
-            <p className="text-gray-300 mb-4">{bio}</p>
+            <p className="text-gray-300 mt-4 mb-6">{bio}</p>
             <div className="flex space-x-4">
               {social.linkedin && (
                 <a
                   href={social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-cyan-400 hover:text-cyan-600"
+                  className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300"
                   aria-label={`${name} LinkedIn`}
                 >
-                  {/* LinkedIn Icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
+                    className="h-7 w-7"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -90,13 +73,12 @@ export default function Team() {
                   href={social.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-cyan-400 hover:text-cyan-600"
+                  className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300"
                   aria-label={`${name} Twitter`}
                 >
-                  {/* Twitter Icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
+                    className="h-7 w-7"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
